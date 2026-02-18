@@ -15,6 +15,7 @@ const HomeController = () => import('#controllers/home_controller')
 // const ProfileController = () => import('#controllers/profiles_controller')
 const AuthController = () => import('#controllers/auth_controller')
 
+router.get('/', async ({ response }) => response.redirect('/menu'))
 router
   .group(() => {
     router.get('/login', [AuthController, 'showLogin']).as('login')
@@ -22,7 +23,7 @@ router
     router.get('/register', [AuthController, 'showRegister']).as('register')
     router.post('/register', [AuthController, 'register'])
   })
-  .use([middleware.guest()])
+  .use(middleware.guest())
 
 router
   .group(() => {
@@ -31,4 +32,4 @@ router
     // router.get('/profile', [ProfileController, 'index']).as('profile')
     router.post('/logout', [AuthController, 'logout']).as('logout')
   })
-  .use([middleware.authCookie(), middleware.auth()])
+  .use(middleware.auth())

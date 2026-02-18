@@ -7,55 +7,32 @@ export default class AuthController {
     return inertia.render('Auth/register')
   }
 
-  public async register({ request, response, inertia }: HttpContext) {
+  public async register({ request, auth, response }: HttpContext) {
     const payload = await request.validateUsing(RegisterValidator)
+
     const user = await User.create(payload)
-    const token = await User.accessTokens.create(user)
 
-    response.cookie('token', token.value!.release(), {
-      httpOnly: true,
-      secure: false,
-      sameSite: 'lax',
-      maxAge: 7 * 24 * 60 * 60,
-      path: '/',
-    })
+    await auth.use('web').login(user)
 
-    return inertia.render('Auth/login', {
-      status: 'success',
-      message: 'User registered successfully',
-    })
+    return response.redirect('/menu')
   }
 
   public async showLogin({ inertia }: HttpContext) {
     return inertia.render('Auth/login')
   }
 
-  public async login({ request, response, inertia }: HttpContext) {
+  public async login({ request, auth, response }: HttpContext) {
     const { phoneNumber, password } = request.only(['phoneNumber', 'password'])
+
     const user = await User.verifyCredentials(phoneNumber, password)
-    const token = await User.accessTokens.create(user)
 
-    response.cookie('token', token.value!.release(), {
-      httpOnly: true,
-      secure: false,
-      sameSite: 'lax',
-      maxAge: 7 * 24 * 60 * 60,
-      path: '/',
-    })
+    await auth.use('web').login(user)
 
-    return inertia.render('Home/index', {
-      status: 'success',
-      user,
-    })
+    return response.redirect('/menu')
   }
 
-  public async logout({ auth, response, inertia }: HttpContext) {
+  public async logout({ auth, response }: HttpContext) {
     await auth.use('web').logout()
-    response.clearCookie('token')
-
-    return inertia.render('Auth/login', {
-      status: 'success',
-      message: 'Logged out successfully',
-    })
+    return response.redirect('/login')
   }
 }
