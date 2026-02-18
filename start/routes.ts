@@ -8,5 +8,6 @@
 */
 
 import router from '@adonisjs/core/services/router'
-router.on('/').renderInertia('home')
+import MenuController from '#controllers/menu_controller'
 
+router.get('/', [MenuController, 'index']).as('home')
