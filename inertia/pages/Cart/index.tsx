@@ -3,10 +3,12 @@ import HCart from './header'
 import Items from './item'
 import Method from './method'
 import MainLayout from '@/layouts/mainLayout'
+import { Head } from '@inertiajs/react'
 
 function Cart() {
   return (
     <MainLayout>
+      <Head title="Cart" />
       <div className="w-full">
         {/* Header */}
         <section className="pb-5 px-5">

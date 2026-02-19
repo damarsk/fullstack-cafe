@@ -30,7 +30,7 @@ function Menu() {
     <div className="w-full bg-white rounded-lg">
       {/* Category */}
       <section className="p-5 w-full">
-        <div className="w-full overflow-x-auto">
+        <div className="w-full pb-2 overflow-x-auto">
           <div className="flex gap-3">
             {/* Active */}
             <button className="px-5 py-2 rounded-full bg-[#0F3D2E] text-white text-sm font-medium whitespace-nowrap">

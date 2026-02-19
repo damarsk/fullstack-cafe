@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
+import { router } from "@inertiajs/react";
 
 interface User {
   id: string;
@@ -33,6 +34,10 @@ export default function ProfilePhoto({ user, onEdit }: ProfilePhotoProps) {
         <Button onClick={onEdit} className="w-full rounded-xl">
           Edit Profile
         </Button>
+        <Button onClick={() => router.post("/logout")} variant="outline" className="w-full rounded-xl text-red-500 border-red-500 hover:bg-red-50 hover:text-red-600 cursor-pointer">
+          Logout
+        </Button>
+
       </CardContent>
     </Card>
   );

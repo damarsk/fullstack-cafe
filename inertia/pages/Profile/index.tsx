@@ -2,6 +2,7 @@ import ProfilePhoto from "./profilePhoto";
 import EditProfile from "./editProfile";
 import OrderHistory from "./orderHistory";
 import MainLayout from "@/layouts/mainLayout";
+import { Head } from "@inertiajs/react";
 
 function ProfilePage() {
   const user = {
@@ -32,6 +33,7 @@ function ProfilePage() {
 
   return (
     <MainLayout>
+      <Head title="Profile" />
       <div className="p-4 w-full space-y-6 pb-24">
         <ProfilePhoto user={user} onEdit={handleEdit} />
         <EditProfile onEdit={handleEdit} />
