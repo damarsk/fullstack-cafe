@@ -2,11 +2,15 @@ import Banner from "./banner";
 import Header from "./header";
 import Status from "./status";
 import Menu from "./menu";
+import MainLayout from "@/layouts/mainLayout";
+import { Head } from "@inertiajs/react";
 
 function Home() {
   return (
-    <div className="w-full p-5">
-      {/* Header */}
+    <MainLayout>
+      <Head title="Menu" />
+      <div className="w-full p-5">
+        {/* Header */}
       <section className="pb-5">
         <Header />
       </section>
@@ -23,6 +27,7 @@ function Home() {
         <Menu />
       </section>
     </div>
+    </MainLayout>
   );
 }
 

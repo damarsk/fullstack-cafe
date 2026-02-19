@@ -1,5 +1,6 @@
-import { Link, ShoppingCart } from "lucide-react";
+import { ShoppingCart } from "lucide-react";
 import logo from "@/assets/logo.png";
+import { Link } from "@inertiajs/react";
 
 function Header() {
   return (
