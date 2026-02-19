@@ -11,7 +11,7 @@ import router from '@adonisjs/core/services/router'
 import { middleware } from '#start/kernel'
 
 const HomeController = () => import('#controllers/home_controller')
-// const CartController = () => import('#controllers/carts_controller')
+const CartController = () => import('#controllers/carts_controller')
 // const ProfileController = () => import('#controllers/profiles_controller')
 const AuthController = () => import('#controllers/auth_controller')
 
@@ -28,7 +28,7 @@ router
 router
   .group(() => {
     router.get('/menu', [HomeController, 'index']).as('home')
-    // router.get('/cart', [CartController, 'index']).as('cart')
+    router.get('/cart', [CartController, 'index']).as('cart')
     // router.get('/profile', [ProfileController, 'index']).as('profile')
     router.post('/logout', [AuthController, 'logout']).as('logout')
   })
