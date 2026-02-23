@@ -27,10 +27,10 @@ const Login = () => {
             <h1 className="text-2xl font-bold text-center">Login</h1>
 
             <input
-              type="text"
+              type="tel"
               placeholder="Phone number"
               value={data.phoneNumber}
-              className="w-full px-4 py-3 border rounded-lg"
+              className="w-full px-4 py-3 border rounded-lg"                                                                                                    
               onChange={(e) => setData('phoneNumber', e.target.value)}
               required
             />
