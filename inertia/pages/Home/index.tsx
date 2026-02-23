@@ -1,6 +1,7 @@
 import Banner from "./banner";
 import Header from "./header";
 import Status from "./status";
+import Table from "./table";
 import Menu from "./menu";
 import MainLayout from "@/layouts/mainLayout";
 import { Head } from "@inertiajs/react";
@@ -17,6 +18,10 @@ function Home() {
       {/* Banner */}
       <section className="pb-5">
         <Banner />
+      </section>
+      {/* Table Number */}
+      <section className="pb-5">
+        <Table />
       </section>
       {/* Status Order */}
       <section className="pb-5">
