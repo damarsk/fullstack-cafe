@@ -1,4 +1,4 @@
-import React from 'react'
+ import React from 'react'
 import { Head, useForm, Link } from '@inertiajs/react'
 import { Button } from '@/components/ui/button'
 import BlankLayout from '@/layouts/blankLayout'
