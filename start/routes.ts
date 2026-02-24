@@ -28,8 +28,12 @@ router
 router
   .group(() => {
     router.get('/menu', [HomeController, 'index']).as('home')
+    router.get('/menu/detail', [HomeController, 'menuDetail']).as('menu.detail')
     router.get('/cart', [CartController, 'index']).as('cart')
     router.get('/profile', [ProfileController, 'index']).as('profile')
+    router.get('/profile/edit', [ProfileController, 'edit']).as('profile.edit')
+    router.get('/change-password', [ProfileController, 'changePassword']).as('change-password')
+    router.get('/history', [ProfileController, 'history']).as('history')
     router.post('/logout', [AuthController, 'logout']).as('logout')
   })
   .use(middleware.auth())
